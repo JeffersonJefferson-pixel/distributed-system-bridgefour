@@ -11,4 +11,12 @@ object Status {
     case Error
     case Missing
   }
+
+  object ExecutionStatus {
+    def available(s: ExecutionStatus): Boolean = {
+      s match
+        case ExecutionStatus.NotStarted | ExecutionStatus.InProgress | ExecutionStatus.Halted => false
+        case _ => true
+    }
+  }
 }
